@@ -8,7 +8,7 @@ type Props = {
     }
 }
 
-export async function GET({ params: { id } }: Props) {
+export async function GET(request: Request, { params: { id } }: Props) {
 
     const res = await fetch(`${DATA_SOURCE_URL}/${id}`)
 
@@ -17,8 +17,4 @@ export async function GET({ params: { id } }: Props) {
     if (!todo.id) return NextResponse.json({ "message": "Todo not found" })
 
     return NextResponse.json(todo)
-}
-
-export async function PUT(request: Request) {
-    const { }: Todo = await request.json()
 }
